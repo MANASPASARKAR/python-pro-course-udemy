@@ -1,6 +1,6 @@
 import os
 import webbrowser
-from filestack import Client
+
 
 
 class PdfReport:
