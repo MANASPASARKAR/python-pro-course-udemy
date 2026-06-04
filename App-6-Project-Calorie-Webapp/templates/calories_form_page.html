@@ -8,7 +8,7 @@
 <body>
 <h2>Calories Calculation Form</h2>
 <p>Fill in the form and click the button to know how many calories you need!</p>
-<form action="/calories_form" method="post">
+<form action={{ url_for('calories_form_page') }} method="post">
     <p>Let's get some info about you first.</p>
     {{caloriesform.weight.label}} {{caloriesform.weight}}
     <br>
@@ -27,6 +27,7 @@
     {{caloriesform.button}}
     <br>
     {% if result==True %}
+    <h3>Today's temperature: {{temperature}}°C</h3>
     <h3>You need {{calories}} calories (kcal) today</h3>
     {% endif %}
 </form>
