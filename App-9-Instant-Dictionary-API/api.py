@@ -1,23 +1,27 @@
-import justpy as jp
+from urllib import response
+
+from flask import Flask, request, jsonify
 import definition
-import json
+app = Flask(__name__)
 
 class Api:
-    """Handles requests at /api?w=word
-    """
-    @classmethod
-    def serve(cls, req):
-        wp = jp.WebPage()
-        word = req.query_params.get('w')
 
+    @classmethod
+    def serve(cls):
+        """
+        Handles requests at /api?w=word
+        """
+        word = request.args.get("w")
         defined = definition.Definition(word).get()
 
         response = {
-            "word":word,
-            "definition":defined
+            "word": word,
+            "definition": defined
         }
 
-        wp.html = json.dumps(response)
-        return wp
+        return jsonify(response)
 
 
+
+if __name__ == "__main__":
+    app.run(debug=True)
