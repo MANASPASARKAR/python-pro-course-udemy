@@ -1,0 +1,1 @@
+from wepred.wepred import Weather
